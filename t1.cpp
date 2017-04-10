@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
@@ -53,6 +54,14 @@ Card::Card(){
         corVermelha = false;
     else
         corVermelha = true;
+//As ultimas quatro cartas são especiais, duas não vermelhas e duas sim vermelhas
+    if(ultimoNaipe>4) {
+        if(ultimoValor == 3) {
+              ultimoValor = 1;
+              ultimoNaipe++;
+        }
+        propriedadeEspecial = true;
+    }
 }
 
 int Card::getNaipe() const{
@@ -233,10 +242,10 @@ bool PilhaInt2<TDA>::Empilha(const TDA &elemento_x){
 int main(){
 
 
-    Card card[52];
+    Card card[56];
     PilhaInt2<Card> CardStack;
 
-    for(int i=0; i<52; i++){
+    for(int i=0; i<56; i++){
         cout << "card" << i << ": "        <<
                 card[i].getNaipe() << "\t" <<
                 card[i].getValor() << "\t" <<
@@ -245,7 +254,7 @@ int main(){
     }
 
     cout << "\n\n\n\n" << endl;
-
+/*
     CardStack.Pilha<Card>::Empilha(card[0]);
     cout << CardStack.getTopo() << endl;
 
@@ -258,7 +267,7 @@ int main(){
     CardStack.Empilha(card[3]);
     cout << CardStack.getTopo() << endl;
 
-
+*/
     return 0;
 
 }
