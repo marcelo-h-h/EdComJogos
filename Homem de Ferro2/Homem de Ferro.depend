@@ -1,0 +1,103 @@
+# depslib dependency file v1.0
+1491853768 source:c:\users\hayasi\desktop\homem de ferro\pilhaburra.cpp
+	<iostream>
+	"pilhaBurra.h"
+
+1491855778 c:\users\hayasi\desktop\homem de ferro\pilhaburra.h
+	<iostream>
+
+1491853961 source:c:\users\hayasi\desktop\homem de ferro\card.cpp
+	<iostream>
+	"card.h"
+
+1491855792 c:\users\hayasi\desktop\homem de ferro\card.h
+	<iostream>
+
+1491854646 source:c:\users\hayasi\desktop\homem de ferro\main.cpp
+	<iostream>
+	<cstdlib>
+	<ctime>
+	"pilhaBurra.cpp"
+	"card.h"
+	"pilhaInt1.cpp"
+	"pilhaInt2.cpp"
+
+1491853768 c:\users\hayasi\desktop\homem de ferro\pilhaburra.cpp
+	<iostream>
+	"pilhaBurra.h"
+
+1491854924 source:c:\users\hayasi\desktop\homem de ferro\pilhaint1.cpp
+	<iostream>
+	"pilhaInt1.h"
+
+1491855798 c:\users\hayasi\desktop\homem de ferro\pilhaint1.h
+	<iostream>
+	"pilhaBurra.h"
+
+1491854414 source:c:\users\hayasi\desktop\homem de ferro\pilhaint2.cpp
+	<iostream>
+	"pilhaInt2.h"
+
+1491855814 c:\users\hayasi\desktop\homem de ferro\pilhaint2.h
+	<iostream>
+	"pilhaBurra.h"
+
+1491854924 c:\users\hayasi\desktop\homem de ferro\pilhaint1.cpp
+	<iostream>
+	"pilhaInt1.h"
+
+1491854414 c:\users\hayasi\desktop\homem de ferro\pilhaint2.cpp
+	<iostream>
+	"pilhaInt2.h"
+
+1491853961 source:c:\users\hayasi\desktop\homem de ferro2\card.cpp
+	<iostream>
+	"card.h"
+
+1491857846 c:\users\hayasi\desktop\homem de ferro2\card.h
+	<iostream>
+
+1491853768 source:c:\users\hayasi\desktop\homem de ferro2\pilhaburra.cpp
+	<iostream>
+	"pilhaBurra.h"
+
+1491857851 c:\users\hayasi\desktop\homem de ferro2\pilhaburra.h
+	<iostream>
+
+1491857265 source:c:\users\hayasi\desktop\homem de ferro2\pilhaint2.cpp
+	<iostream>
+	"pilhaInt2.h"
+
+1491857817 c:\users\hayasi\desktop\homem de ferro2\pilhaint2.h
+	<iostream>
+	"pilhaBurra.h"
+
+1491858212 source:c:\users\hayasi\desktop\homem de ferro2\main.cpp
+	<iostream>
+	<cstdlib>
+	<ctime>
+	"card.h"
+	"pilhaBurra.cpp"
+	"pilhaInt1.cpp"
+	"pilhaInt2.cpp"
+
+1491853768 c:\users\hayasi\desktop\homem de ferro2\pilhaburra.cpp
+	<iostream>
+	"pilhaBurra.h"
+
+1491858092 c:\users\hayasi\desktop\homem de ferro2\pilhaint1.cpp
+	<iostream>
+	"pilhaInt1.h"
+
+1491857889 c:\users\hayasi\desktop\homem de ferro2\pilhaint1.h
+	<iostream>
+	"pilhaBurra.h"
+
+1491857265 c:\users\hayasi\desktop\homem de ferro2\pilhaint2.cpp
+	<iostream>
+	"pilhaInt2.h"
+
+1491858092 source:c:\users\hayasi\desktop\homem de ferro2\pilhaint1.cpp
+	<iostream>
+	"pilhaInt1.h"
+
