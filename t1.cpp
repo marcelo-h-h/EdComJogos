@@ -1,4 +1,3 @@
-/*MADE BY MARCELO ONLY*/
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
@@ -26,7 +25,7 @@ class Card{
 
         void setNaipe(const int &_naipe);
         void setValor(const int &_valor);
-        void setPropriedadeEspecial(const int &_propriedadeEspecial);
+        void setPropriedadeEspecial(const bool &_propriedadeEspecial);
         void setCorVermelha(const bool &_corVermelha);
 
         int  getNaipe() const;
@@ -54,15 +53,15 @@ Card::Card(){
         corVermelha = false;
     else
         corVermelha = true;
-//As ultimas quatro cartas são especiais, duas não vermelhas e duas sim vermelhas
-    if(ultimoNaipe>4) {
-        if(ultimoValor == 3) {
-              ultimoValor = 1;
-              ultimoNaipe++;
-        }
+
+    if(naipe>4){
         propriedadeEspecial = true;
+        valor = 0;
+        ultimoNaipe++;
     }
 }
+
+
 
 int Card::getNaipe() const{
     return naipe;
@@ -88,7 +87,7 @@ void Card::setCorVermelha(const bool &_corVermelha){
     corVermelha = _corVermelha;
 }
 
-void Card::setPropriedadeEspecial(const int &_propriedadeEspecial){
+void Card::setPropriedadeEspecial(const bool &_propriedadeEspecial){
     propriedadeEspecial = _propriedadeEspecial;
 }
 
@@ -121,6 +120,7 @@ class Pilha{
         bool Cheia() const;
 
         TDA getTopo() const; /* esse método é só pra teste. Teoricamente, ele não deve existir haha */
+        void print() const;
 };
 
 /*CLASSE PILHA FILHO 1 (EMPILHA LEVANDO EM CONSIDERACAO A COR E VALORES)
@@ -194,6 +194,13 @@ TDA Pilha<TDA>::getTopo() const{
     return elementos[topo];
 }
 
+template <class TDA>
+void Pilha<TDA>::print() const{
+    for(int i=0; i<=topo; i++){
+        cout << elementos[i] << endl;
+    }
+}
+
 /*Nesse metodo, empilha-se somente se a cor do elemento que esta no topo for diferente
   da cor do elemento que se quer empilhar
   Alem disso, tambem so pode empilhar caso o elemento do topo for 1 unidade maior que
@@ -237,37 +244,49 @@ bool PilhaInt2<TDA>::Empilha(const TDA &elemento_x){
 }
 
 
-
 /*So pra casos de teste*/
 int main(){
 
+    srand(time(NULL));
 
     Card card[56];
-    PilhaInt2<Card> CardStack;
 
-    for(int i=0; i<56; i++){
-        cout << "card" << i << ": "        <<
-                card[i].getNaipe() << "\t" <<
-                card[i].getValor() << "\t" <<
-                card[i].getCorVermelha() << "\t"  <<
-                card[i].getPropriedadeEspecial() << endl;
+    for(int i=0; i<52; i++){
+        int posicaoAleatoria = rand() % 52;
+
+        Card cardAuxiliar = card[i];
+        card[i] = card[posicaoAleatoria];
+        card[posicaoAleatoria] = cardAuxiliar;
     }
 
-    cout << "\n\n\n\n" << endl;
-/*
-    CardStack.Pilha<Card>::Empilha(card[0]);
-    cout << CardStack.getTopo() << endl;
+    PilhaInt1<Card> Pilha[8];
+    int m = 0;
+    int n = 7;
 
-    CardStack.Pilha<Card>::Empilha(card[1]);
-    cout << CardStack.getTopo() << endl;
+    for(int i=0; i<8; i++){
+        for(int j=m; j<n; j++){
+            Pilha[i].Pilha<Card>::Empilha(card[j]);
+        }
+        if(i<3){
+            m = n;
+            n+=7;
+        }
+        else{
+            m = n;
+            n+=6;
+        }
+    }
 
-    CardStack.Pilha<Card>::Empilha(card[2]);
-    cout << CardStack.getTopo() << endl;
+    for(int i=0; i<=3; i++){
+        Pilha[4+i].Pilha<Card>::Empilha(card[52+i]);
+    }
 
-    CardStack.Empilha(card[3]);
-    cout << CardStack.getTopo() << endl;
+    for(int i=0; i<8; i++){
+            Pilha[i].print();
+            cout << "\n\n";
+    }
 
-*/
+
     return 0;
 
 }
