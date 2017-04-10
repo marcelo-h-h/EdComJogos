@@ -18,10 +18,7 @@ class Card{
         bool propriedadeEspecial;
 
     public:
-        Card(int _naipe = 1,
-             int _valor = 1,
-             bool _corVermelha = true,
-             bool _propriedadeEspecial = false);
+        Card();
 
         void setNaipe(const int &_naipe);
         void setValor(const int &_valor);
@@ -33,20 +30,40 @@ class Card{
         bool getPropriedadeEspecial() const;
         bool getCorVermelha() const;
 
-        static UNaipe;
-        static UValor;
+        static int UNaipe;
+        static int UValor;
 };
 
-Card::UNaipe = 1;
-Card::UValor = 1;
+int Card::UNaipe = 0;
+int Card::UValor = 0;
 
-Card::Card(int _naipe,
-           int _valor,
-           bool _corVermelha,
-           bool _propriedadeEspecial) : naipe(_naipe), valor(_valor),
-                                        corVermelha(_corVermelha),
-                                        propriedadeEspecial(_propriedadeEspecial){}
+Card::Card() {  
+    naipe = UNaipe;
+    valor = UValor;
+    if(naipe == 1 || naipe == 3 || naipe == 5) {
+        corVermelha = 1;
+    }
+    else {
+        corVermelha = 0;
+    }
 
+    if(UNaipe >= 5) {
+        propriedadeEspecial = 1;
+    }
+    else {
+        propriedadeEspecial = 0;
+    }
+
+
+    if(UValor == 13 || (UNaipe == 5 && UValor == 2)) {
+        UNaipe++;
+        UValor = 1;
+    }
+    else {
+        UValor++;
+    }
+}
+          
 int Card::getNaipe() const{
     return naipe;
 }
@@ -227,16 +244,16 @@ int main(){
     PilhaInt1<Card> CardStack;
 
     srand(time(NULL));
-    Card card[21];
+    Card card[52];
 
-    for(int i=0; i<21; i++){
+/*    for(int i=0; i<21; i++){
         card[i].setNaipe(1+rand()%4);
         card[i].setValor(1+rand()%13);
         card[i].setCorVermelha(rand()%2);
         card[i].setPropriedadeEspecial(rand()%2);
     }
-
-    for(int i=0; i<21; i++){
+*/
+    for(int i=0; i<52; i++){
         cout << "card" << i << ": "        <<
                 card[i].getNaipe() << "\t" <<
                 card[i].getValor() << "\t" <<
@@ -245,7 +262,7 @@ int main(){
     }
 
     cout << "\n\n\n\n" << endl;
-
+/*
     CardStack.Pilha<Card>::Empilha(card[0]);
     cout << CardStack.getTopo() << endl;
 
@@ -258,7 +275,7 @@ int main(){
     CardStack.Empilha(card[3]);
     cout << CardStack.getTopo() << endl;
 
-
+*/
     return 0;
 
 } 	
