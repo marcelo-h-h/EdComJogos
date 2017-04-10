@@ -1,4 +1,4 @@
-#MADE BY MARCELO ONLY
+/*MADE BY MARCELO ONLY*/
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
