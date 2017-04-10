@@ -17,6 +17,9 @@ class Card{
         bool corVermelha;
         bool propriedadeEspecial;
 
+        static int ultimoNaipe;
+        static int ultimoValor;
+
     public:
         Card();
 
@@ -29,41 +32,29 @@ class Card{
         int  getValor() const;
         bool getPropriedadeEspecial() const;
         bool getCorVermelha() const;
-
-        static int UNaipe;
-        static int UValor;
 };
 
-int Card::UNaipe = 0;
-int Card::UValor = 0;
-
-Card::Card() {  
-    naipe = UNaipe;
-    valor = UValor;
-    if(naipe == 1 || naipe == 3 || naipe == 5) {
-        corVermelha = 1;
-    }
-    else {
-        corVermelha = 0;
-    }
-
-    if(UNaipe >= 5) {
-        propriedadeEspecial = 1;
-    }
-    else {
-        propriedadeEspecial = 0;
-    }
+int Card::ultimoNaipe = 1;
+int Card::ultimoValor = 1;
 
 
-    if(UValor == 13 || (UNaipe == 5 && UValor == 2)) {
-        UNaipe++;
-        UValor = 1;
+Card::Card(){
+    naipe = ultimoNaipe;
+    valor = ultimoValor;
+    propriedadeEspecial = false;
+
+    ultimoValor++;
+
+    if(valor==13){
+        ultimoNaipe++;
+        ultimoValor = 1;
     }
-    else {
-        UValor++;
-    }
+    if(naipe%2!=0)
+        corVermelha = false;
+    else
+        corVermelha = true;
 }
-          
+
 int Card::getNaipe() const{
     return naipe;
 }
@@ -223,8 +214,8 @@ bool PilhaInt1<TDA>::Empilha(const TDA &elemento_x){
 template<class TDA>
 bool PilhaInt2<TDA>::Empilha(const TDA &elemento_x){
         TDA aux;
-        Desempilha(aux);
-        Empilha(aux);
+        Pilha<TDA>::Desempilha(aux);
+        Pilha<TDA>::Empilha(aux);
 
         if(aux.getNaipe()   == elemento_x.getNaipe() &&
            aux.getValor()+1 == elemento_x.getValor()  )
@@ -241,18 +232,10 @@ bool PilhaInt2<TDA>::Empilha(const TDA &elemento_x){
 /*So pra casos de teste*/
 int main(){
 
-    PilhaInt1<Card> CardStack;
 
-    srand(time(NULL));
     Card card[52];
+    PilhaInt2<Card> CardStack;
 
-/*    for(int i=0; i<21; i++){
-        card[i].setNaipe(1+rand()%4);
-        card[i].setValor(1+rand()%13);
-        card[i].setCorVermelha(rand()%2);
-        card[i].setPropriedadeEspecial(rand()%2);
-    }
-*/
     for(int i=0; i<52; i++){
         cout << "card" << i << ": "        <<
                 card[i].getNaipe() << "\t" <<
@@ -262,7 +245,7 @@ int main(){
     }
 
     cout << "\n\n\n\n" << endl;
-/*
+
     CardStack.Pilha<Card>::Empilha(card[0]);
     cout << CardStack.getTopo() << endl;
 
@@ -275,7 +258,7 @@ int main(){
     CardStack.Empilha(card[3]);
     cout << CardStack.getTopo() << endl;
 
-*/
+
     return 0;
 
-} 	
+}
